@@ -1,6 +1,4 @@
 ﻿import * as React from 'react';
-import { FormGroup, ControlLabel, Button, FormControl } from 'react-bootstrap';
-import { render } from 'react-dom';
 
 export class CustomerQuestionForm extends React.Component {
     state = { value: '' };
@@ -19,29 +17,24 @@ export class CustomerQuestionForm extends React.Component {
 
     render() {
         return (
-            <form>
-                <FormGroup controlId="formEmailText"
-                    validationState={this.getValidationState()}
-                >
-                    <ControlLabel>Email address</ControlLabel>
-                    <FormControl
-                        type="text"
-                        value={this.state.value}
-                        placeholder="customer@hotmail.com"
-                        onChange={this.handleChange}
-                    />
-                    <FormControl.Feedback />
-                </FormGroup>
-
-                <FormGroup controlId="formQuestionText" >
-                    <ControlLabel>Your Question</ControlLabel>
-                    <FormControl
-                        componentClass="textarea"
-                        type="text"
-                        placeholder="What is your question?"
-                    />
-                </FormGroup>
-                <Button type="submit">Submit</Button>
+            <form className="form-horizontal">
+                <div className="form-group">
+                    <label htmlFor="customerEmail" className="col-sm-2 control-label">Email</label>
+                    <div className="col-sm-10">
+                        <input type="email" className="form-control" id="customerEmail" placeholder="Email" />
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="customerQuestion" className="col-sm-2 control-label">Your Question</label>
+                    <div className="col-sm-10">
+                        <input type="text" className="form-control" id="customerQuestion" placeholder="What is your question?" />
+                    </div>
+                </div>
+                <div className="form-group">
+                    <div className="col-sm-offset-2 col-sm-10">
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </div>
+                </div>
             </form>
         );
     }

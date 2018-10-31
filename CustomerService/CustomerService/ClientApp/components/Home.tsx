@@ -6,7 +6,7 @@ export class Home extends React.Component<RouteComponentProps<{}>, {}> {
     public render() {
         return (
             <div>
-                <h1>Hello, world!</h1>
+                <h1>Submit a ticket</h1>
 
                 <CustomerQuestionForm />
             </div>
