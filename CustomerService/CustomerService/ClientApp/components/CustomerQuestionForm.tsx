@@ -1,18 +1,34 @@
 ﻿import * as React from 'react';
 
-export class CustomerQuestionForm extends React.Component {
-    state = { value: '' };
+interface CustomerQuestionFormState {
+    value: string;
+}
 
-    getValidationState() {
-        const length = this.state.value.length;
-        if (length > 10) return 'success';
-        else if (length > 5) return 'warning';
-        else if (length > 0) return 'error';
-        return null;
+export class CustomerQuestionForm extends React.Component<{}, CustomerQuestionFormState> {
+    constructor(props) {
+        super(props);
+        this.state = { value: '' };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    //state = { emailValue: '' };
+
+    //getValidationState() {
+    //    const length = this.state.emailValue.length;
+    //    if (length > 10) return 'success';
+    //    else if (length > 5) return 'warning';
+    //    else if (length > 0) return 'error';
+    //    return null;
+    //}
 
     handleChange(e) {
         this.setState({ value: e.target.value });
+    }
+
+    handleSubmit(e) {
+        alert('Email submitted: ' + this.state.value);
     }
 
     render() {
@@ -20,7 +36,9 @@ export class CustomerQuestionForm extends React.Component {
             <form>
                 <div className="form-group">
                     <label htmlFor="customerEmail">User email</label>
-                    <input type="email" className="form-control" id="customerEmail" placeholder="example@hotmail.com" />
+                    <input type="email" className="form-control" id="customerEmail" placeholder="example@hotmail.com"
+                        onChange={this.handleChange}
+                    />
                 </div>
 
                 <div className="form-group">
@@ -34,7 +52,7 @@ export class CustomerQuestionForm extends React.Component {
                 </div>
 
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
                 </div>
             </form>
         );
