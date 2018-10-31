@@ -17,23 +17,24 @@ export class CustomerQuestionForm extends React.Component {
 
     render() {
         return (
-            <form className="form-horizontal">
+            <form>
                 <div className="form-group">
-                    <label htmlFor="customerEmail" className="col-sm-2 control-label">Email</label>
-                    <div className="col-sm-10">
-                        <input type="email" className="form-control" id="customerEmail" placeholder="Email" />
-                    </div>
+                    <label htmlFor="customerEmail">User email</label>
+                    <input type="email" className="form-control" id="customerEmail" placeholder="example@hotmail.com" />
                 </div>
+
                 <div className="form-group">
-                    <label htmlFor="customerQuestion" className="col-sm-2 control-label">Your Question</label>
-                    <div className="col-sm-10">
-                        <input type="text" className="form-control" id="customerQuestion" placeholder="What is your question?" />
-                    </div>
+                    <label htmlFor="customerTopic">Your Topic</label>
+                    <input type="text" className="form-control" id="customerTopic" placeholder="What is your topic?" />
                 </div>
+
                 <div className="form-group">
-                    <div className="col-sm-offset-2 col-sm-10">
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </div>
+                    <label htmlFor="customerQuestion">Your Question</label>
+                    <textarea type="text" rows={3} className="form-control" id="customerQuestion" placeholder="What is your question?" />
+                </div>
+
+                <div className="form-group">
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </form>
         );
