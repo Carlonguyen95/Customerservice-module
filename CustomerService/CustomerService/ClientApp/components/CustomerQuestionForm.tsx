@@ -1,36 +1,26 @@
 ﻿import * as React from 'react';
 
 interface CustomerQuestionFormState {
-    email: string;
-    topic: string;
+    value: string;
 }
 
 export class CustomerQuestionForm extends React.Component<{}, CustomerQuestionFormState> {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            topic: ''
+            value: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    //getValidationState() {
-    //    const length = this.state.value.length;
-    //    if (length > 10) return 'has-success';
-    //    else if (length > 5) return 'has-warning';
-    //    else if (length > 0) return 'has-error';
-    //    return null;
-    //}
-
     handleChange(e) {
-        this.setState({ email: e.target.email });
+        this.setState({ value: e.target.value });
     }
 
     handleSubmit(e) {
-        alert('Email submitted: ' + this.state.email);
+        alert('Email submitted: ' + this.state.value);
     }
 
     render() {
