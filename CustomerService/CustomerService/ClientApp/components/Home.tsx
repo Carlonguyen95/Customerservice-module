@@ -6,9 +6,9 @@ export class Home extends React.Component<RouteComponentProps<{}>, {}> {
     public render() {
         return (
             <div>
-                <h1>Submit a ticket</h1>
+                <h1>Welcome to Carlos Customer Service</h1>
 
-                <CustomerQuestionForm />
+                <p>This is a help center for Movie Monster</p>
             </div>
         );
     }
