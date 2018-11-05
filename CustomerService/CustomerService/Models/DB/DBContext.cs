@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CustomerService.Models
 {
-    public class CustomerDBContext : DbContext
+    public class DBContext : DbContext
     {
-        public CustomerDBContext(DbContextOptions options) 
+        public DBContext(DbContextOptions options) 
             : base(options) {}
         public DbSet<Customer> Customer { get; set; }
         public DbSet<FAQ> FAQ { get; set; }

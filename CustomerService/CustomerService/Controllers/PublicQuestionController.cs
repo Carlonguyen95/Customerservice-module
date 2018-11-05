@@ -15,9 +15,9 @@ namespace CustomerService.Controllers
     [Route("api/Customer")]
     public class PublicQuestionController : Controller
     {
-        private readonly CustomerDBContext _context;
+        private readonly DBContext _context;
 
-        public PublicQuestionController(CustomerDBContext context)
+        public PublicQuestionController(DBContext context)
         {
             _context = context;
         }

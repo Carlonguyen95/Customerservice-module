@@ -7,9 +7,9 @@ namespace CustomerService.Models.DB
 {
     public class DBCustomer
     {
-        private readonly CustomerDBContext _context;
+        private readonly DBContext _context;
 
-        public DBCustomer(CustomerDBContext context)
+        public DBCustomer(DBContext context)
         {
             _context = context;
         }

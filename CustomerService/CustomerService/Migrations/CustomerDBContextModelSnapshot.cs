@@ -10,7 +10,7 @@ using System;
 
 namespace CustomerService.Migrations
 {
-    [DbContext(typeof(CustomerDBContext))]
+    [DbContext(typeof(DBContext))]
     partial class CustomerDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

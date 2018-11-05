@@ -13,9 +13,9 @@ namespace CustomerService.Controllers
     [Route("api/[controller]")]
     public class FAQController : Controller
     {
-        private readonly CustomerDBContext _context;
+        private readonly DBContext _context;
 
-        public FAQController(CustomerDBContext context)
+        public FAQController(DBContext context)
         {
             _context = context;
         }

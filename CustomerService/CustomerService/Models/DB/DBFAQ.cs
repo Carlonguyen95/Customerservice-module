@@ -8,9 +8,9 @@ namespace CustomerService.Models.DB
 {
     public class DBFAQ
     {
-        private readonly CustomerDBContext _context;
+        private readonly DBContext _context;
 
-        public DBFAQ(CustomerDBContext context) {
+        public DBFAQ(DBContext context) {
             _context = context;
         }
 

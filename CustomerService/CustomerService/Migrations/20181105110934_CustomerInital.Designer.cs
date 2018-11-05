@@ -10,7 +10,7 @@ using System;
 
 namespace CustomerService.Migrations
 {
-    [DbContext(typeof(CustomerDBContext))]
+    [DbContext(typeof(DBContext))]
     [Migration("20181105110934_CustomerInital")]
     partial class CustomerInital
     {
