@@ -15,27 +15,27 @@ namespace CustomerService.Controllers
     [Route("api/Customer")]
     public class CustomerController : Controller
     {
-        DBCustomer objcustomer = new DBCustomer();
+        //DBCustomer objcustomer = new DBCustomer();
 
-        [HttpPost]
-        [Route("api/Customer/Create")]
-        public HttpResponseMessage Create(Customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                if (objcustomer.AddCustomerQuestion(customer))
-                {
-                    return new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
-                }
-            }
-            return new HttpResponseMessage()
-            {
-                StatusCode = HttpStatusCode.NotFound,
-                Content = new StringContent("Error adding customerquestion in database")
-            };
-        }
+        //[HttpPost]
+        //[Route("api/Customer/Create")]
+        //public HttpResponseMessage Create(Customer customer)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (objcustomer.AddCustomerQuestion(customer))
+        //        {
+        //            return new HttpResponseMessage()
+        //            {
+        //                StatusCode = HttpStatusCode.OK
+        //            };
+        //        }
+        //    }
+        //    return new HttpResponseMessage()
+        //    {
+        //        StatusCode = HttpStatusCode.NotFound,
+        //        Content = new StringContent("Error adding customerquestion in database")
+        //    };
+        //}
     }
 }

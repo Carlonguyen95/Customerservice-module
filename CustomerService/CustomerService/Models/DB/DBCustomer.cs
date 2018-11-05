@@ -7,20 +7,5 @@ namespace CustomerService.Models.DB
 {
     public class DBCustomer
     {
-        CustomerDBContext db = new CustomerDBContext();
-
-        public bool AddCustomerQuestion(Customer customer)
-        {
-            try
-            {
-                db.Customer.Add(customer);
-                db.SaveChanges();
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
-        }
     }
 }
