@@ -25,7 +25,7 @@ export class FAQ extends React.Component<RouteComponentProps<{}>, FAQState> {
     public render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : this.renderFAQElement(this.state.faqList);
+            : FAQ.renderFAQElement(this.state.faqList);
 
         return (
             <div>
@@ -36,19 +36,30 @@ export class FAQ extends React.Component<RouteComponentProps<{}>, FAQState> {
         );
     }
 
-    private renderFAQElement(faqList: FAQData[]) {
-        return (
-            <div>
+    private static renderFAQElement(faqList: FAQData[]) {
+        return <table className='table table-striped'>
+            <thead>
+                <tr>
+                    <th><div className="col-sm-2 hidden-xs"></div></th>
+                    <th>Question</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
                 {faqList.map(faq =>
-                    <h1>{faq.title}</h1>
-                    )}
-            </div>
-        );
-        
+                    <tr key={faq.id}>
+                        <th><span className="glyphicon glyphicon-thumbs-up"></span></th>
+                        <td>{faq.question}</td>
+                        <td>{faq.solution}</td>
+                    </tr>
+                )}
+            </tbody>
+        </table>;
     }
 }
 
 interface FAQData {
-    title: string;
+    id: number;
     question: string;
+    solution: string;
 }

@@ -20,6 +20,7 @@ namespace CustomerService.Controllers
             _context = context;
         }
 
+        // List all FAQ data
         [HttpGet("[action]")]
         public IEnumerable<FAQ> Index()
         {
