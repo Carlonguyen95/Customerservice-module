@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { CustomerQuestionForm } from './CustomerQuestionForm';
+import { CustomerQuestionForm } from './QuestionForm';
 
 export class Ask extends React.Component<RouteComponentProps<{}>, {}> {
     public render() {
