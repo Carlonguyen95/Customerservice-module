@@ -11,5 +11,6 @@ namespace CustomerService.Models
         public CustomerDBContext() { }
         public CustomerDBContext(DbContextOptions options) : base(options) {}
         public DbSet<Customer> Customer { get; set; }
+        public DbSet<FAQ> FAQ { get; set; }
     }
 }

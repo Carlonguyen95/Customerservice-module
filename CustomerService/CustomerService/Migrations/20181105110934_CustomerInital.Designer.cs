@@ -11,8 +11,8 @@ using System;
 namespace CustomerService.Migrations
 {
     [DbContext(typeof(CustomerDBContext))]
-    [Migration("20181102234413_Customer")]
-    partial class Customer
+    [Migration("20181105110934_CustomerInital")]
+    partial class CustomerInital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,20 @@ namespace CustomerService.Migrations
                     b.HasKey("CustomerID");
 
                     b.ToTable("Customer");
+                });
+
+            modelBuilder.Entity("CustomerService.Models.FAQ", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Question");
+
+                    b.Property<string>("Solution");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FAQ");
                 });
 #pragma warning restore 612, 618
         }

@@ -33,6 +33,20 @@ namespace CustomerService.Migrations
 
                     b.ToTable("Customer");
                 });
+
+            modelBuilder.Entity("CustomerService.Models.FAQ", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Question");
+
+                    b.Property<string>("Solution");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FAQ");
+                });
 #pragma warning restore 612, 618
         }
     }
