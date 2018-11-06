@@ -6,6 +6,7 @@ import { Counter } from './components/Counter';
 import { Ask } from './components/Ask';
 import { FAQ } from './components/FAQ';
 import { Public } from './components/Public';
+import { AddQuestion } from './components/AddQuestion';
 
 export const routes = <Layout>
     <Route exact path='/' component={Home} />
@@ -13,4 +14,5 @@ export const routes = <Layout>
     <Route path='/public' component={Public} />
     <Route path='/counter' component={Counter} />
     <Route path='/faq' component={FAQ} />
+    <Route path='/addquestion' component={AddQuestion} />
 </Layout>;

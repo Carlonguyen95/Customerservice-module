@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CustomerService.Models
 {
-    public class Customer
+    public class QuestionModel
     {
         [Key]
-        public int CustomerID { get; set; }
-        public string CustomerEmail { get; set; }
-        public string CustomerQuestion { get; set; }
+        public int QuestionID { get; set; }
+        public string Question { get; set; }
+        public int QuestionSolution { get; set; }
     }
 }

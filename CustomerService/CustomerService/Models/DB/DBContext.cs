@@ -10,7 +10,7 @@ namespace CustomerService.Models
     {
         public DBContext(DbContextOptions options) 
             : base(options) {}
-        public DbSet<Customer> Customer { get; set; }
+        public DbSet<QuestionModel> Question { get; set; }
         public DbSet<FAQ> FAQ { get; set; }
     }
 }

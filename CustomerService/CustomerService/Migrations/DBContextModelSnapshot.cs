@@ -11,7 +11,7 @@ using System;
 namespace CustomerService.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class CustomerDBContextModelSnapshot : ModelSnapshot
+    partial class DBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -20,24 +20,12 @@ namespace CustomerService.Migrations
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CustomerService.Models.Customer", b =>
-                {
-                    b.Property<int>("CustomerID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CustomerEmail");
-
-                    b.Property<string>("CustomerQuestion");
-
-                    b.HasKey("CustomerID");
-
-                    b.ToTable("Customer");
-                });
-
             modelBuilder.Entity("CustomerService.Models.FAQ", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("FAQRating");
 
                     b.Property<string>("Question");
 
@@ -46,6 +34,20 @@ namespace CustomerService.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("FAQ");
+                });
+
+            modelBuilder.Entity("CustomerService.Models.QuestionModel", b =>
+                {
+                    b.Property<int>("QuestionID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Question");
+
+                    b.Property<int>("QuestionSolution");
+
+                    b.HasKey("QuestionID");
+
+                    b.ToTable("Question");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,7 +14,7 @@ namespace CustomerService.Models.DB
             _context = context;
         }
 
-        public bool AddQuestion(Customer customer) {
+        public bool AddQuestion(QuestionModel customer) {
             return false;
         }
     }

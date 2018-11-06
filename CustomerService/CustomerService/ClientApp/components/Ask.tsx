@@ -6,7 +6,7 @@ export class Ask extends React.Component<RouteComponentProps<{}>, {}> {
     public render() {
         return (
             <div>
-                <h1>Submit a ticket</h1>
+                <h1>Submit a question</h1>
 
                 <CustomerQuestionForm />
             </div>

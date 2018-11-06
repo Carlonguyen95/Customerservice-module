@@ -25,7 +25,7 @@ namespace CustomerService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<DBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Customer")));
+            services.AddDbContext<DBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("QuestionCS")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

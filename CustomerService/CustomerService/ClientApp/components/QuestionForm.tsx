@@ -1,46 +1,70 @@
 ﻿import * as React from 'react';
 
 interface CustomerQuestionFormState {
-    value: string;
+    topic: string;
+    question: string;
 }
 
 export class CustomerQuestionForm extends React.Component<{}, CustomerQuestionFormState> {
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
+            topic: '',
+            question: '',
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleTopic = this.handleTopic.bind(this);
+        this.handleQuestion = this.handleQuestion.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(e) {
-        this.setState({ value: e.target.value });
+    handleTopic(event) {
+        this.setState({
+            topic: event.target.value
+        });
+    }
+    handleQuestion(event) {
+        this.setState({
+            question: event.target.value
+        });
     }
 
-    handleSubmit(e) {
-        alert('Email submitted: ' + this.state.value);
+    async handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+
+        // POST request for Add Question
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        const options = {
+            method: "POST",
+            headers,
+            body: JSON.stringify(data),
+        };
+
+        const request = new Request('api/Customer/Create', options);
+        const response = await fetch(request);
+        const status = await response.status;
+
+        alert('JSON: ' + this.state.topic + " " + this.state.question);
     }
 
     render() {
         return (
             <form>
                 <div className="form-group">
-                    <label htmlFor="customerEmail">User email</label>
-                    <input type="email" className="form-control" id="customerEmail" placeholder="example@hotmail.com"
-                        onChange={this.handleChange}
+                    <label htmlFor="customerTopic">Your Topic</label>
+                    <input type="text" className="form-control" id="topic" placeholder="What is your topic?"
+                        onChange={this.handleTopic}
                     />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="customerTopic">Your Topic</label>
-                    <input type="text" className="form-control" id="customerTopic" placeholder="What is your topic?" />
-                </div>
-
-                <div className="form-group">
                     <label htmlFor="customerQuestion">Your Question</label>
-                    <textarea type="text" rows={3} className="form-control" id="customerQuestion" placeholder="What is your question?" />
+                    <textarea type="text" rows={3} className="form-control" id="question" placeholder="What is your question?"
+                        onChange={this.handleQuestion}
+                    />
                 </div>
 
                 <div className="form-group">

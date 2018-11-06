@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CustomerService.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Customer")]
+    [Route("api/[controller]")]
     public class PublicQuestionController : Controller
     {
         private readonly DBContext _context;
@@ -23,8 +23,8 @@ namespace CustomerService.Controllers
         }
 
         [HttpPost]
-        [Route("api/Customer/Create")]
-        public HttpResponseMessage Create(Customer customer)
+        [Route("api/Question/Create")]
+        public HttpResponseMessage Create(QuestionModel customer)
         {
             var db = new DBCustomer(_context);
             if (ModelState.IsValid)
@@ -40,7 +40,7 @@ namespace CustomerService.Controllers
             return new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.NotFound,
-                Content = new StringContent("Error adding customerquestion in database")
+                Content = new StringContent("Error adding question in database")
             };
         }
     }
