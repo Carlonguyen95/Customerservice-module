@@ -26,13 +26,15 @@ export default class QuestionForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target.form);
 
         // POST request for Add Question
         fetch('api/QuestionModels', {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                'QuestionTopic': this.state.topic,
+                'Question': this.state.question
+            })
         }).then(response => {
             return response;
             }).catch(err => err);
@@ -41,7 +43,7 @@ export default class QuestionForm extends Component {
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="customerTopic">Your Topic</label>
                     <input type="text" className="form-control" name="topic" placeholder="What is your topic?"
@@ -57,7 +59,7 @@ export default class QuestionForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </form>
         );

@@ -21,15 +21,15 @@ export default class PublicQuestions extends Component {
         return <table className='table table-striped'>
             <thead>
                 <tr>
+                    <th> Question Topic </th>
                     <th> Question </th>
-                    <th> Solution </th>
                 </tr>
             </thead>
             <tbody>
                 {publicQuestionList.map(faq =>
                         <tr key={faq.id}>
+                            <td>{faq.questionTopic}</td>
                             <td>{faq.question}</td>
-                            <td>{faq.questionSolution}</td>
                         </tr>
                     )}
             </tbody>
