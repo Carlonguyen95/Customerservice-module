@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import QuestionForm from './QuestionForm';
+import PublicQuestionForm from './PublicQuestionForm';
 
 export class Public extends Component {
     displayName = Public.name
@@ -9,7 +9,7 @@ export class Public extends Component {
             <div>
                 <h1>Browse Public Questions</h1>
 
-                <QuestionForm/>
+                <PublicQuestionForm/>
             </div>
         );
     }
