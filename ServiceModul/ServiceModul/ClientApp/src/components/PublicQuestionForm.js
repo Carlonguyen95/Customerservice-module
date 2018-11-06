@@ -3,8 +3,8 @@
 export default class QuestionForm extends Component {
     displayName = QuestionForm.name
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             topic: '',
             question: '',
@@ -24,25 +24,19 @@ export default class QuestionForm extends Component {
         });
     }
 
-    async handleSubmit(event) {
+    handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target);
+        const data = new FormData(event.target.form);
 
         // POST request for Add Question
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        const options = {
-            method: "POST",
-            headers,
-            body: JSON.stringify(data),
-        };
-
-        const request = new Request('api/QuestionModels', options);
-        const response = await fetch(request);
-        const status = await response.status;
-
-        alert('JSON: ' + this.state.topic + " " + this.state.question);
+        fetch('api/QuestionModels', {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify(data)
+        }).then(response => {
+            return response;
+            }).catch(err => err);
+        alert(this.state.topic + " " + this.state.question);
     }
 
     render() {

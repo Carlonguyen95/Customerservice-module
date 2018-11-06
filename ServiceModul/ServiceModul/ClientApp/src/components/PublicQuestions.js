@@ -29,7 +29,7 @@ export default class PublicQuestions extends Component {
                 {publicQuestionList.map(faq =>
                         <tr key={faq.id}>
                             <td>{faq.question}</td>
-                            <td>{faq.solution}</td>
+                            <td>{faq.questionSolution}</td>
                         </tr>
                     )}
             </tbody>

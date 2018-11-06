@@ -25,12 +25,12 @@ export class NavMenu extends Component {
             </LinkContainer>
             <LinkContainer to={'/public'}>
               <NavItem>
-                <Glyphicon glyph='education' /> Browse Public Questions
+                <Glyphicon glyph='edit' /> Browse Public Questions
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/faq'}>
               <NavItem>
-                <Glyphicon glyph='th-list' /> FAQ
+                <Glyphicon glyph='question-sign' /> FAQ
               </NavItem>
             </LinkContainer>
           </Nav>
