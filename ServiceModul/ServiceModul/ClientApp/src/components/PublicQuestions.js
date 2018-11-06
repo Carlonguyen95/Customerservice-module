@@ -1,6 +1,8 @@
 ﻿import React, { Component } from 'react';
 
-export class PublicQuestions extends Component {
+export default class PublicQuestions extends Component {
+    displayName = PublicQuestions.name
+
     constructor() {
         super();
         this.state = {

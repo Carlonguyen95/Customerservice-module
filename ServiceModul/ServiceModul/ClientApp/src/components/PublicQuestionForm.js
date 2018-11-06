@@ -38,7 +38,7 @@ export default class QuestionForm extends Component {
             body: JSON.stringify(data),
         };
 
-        const request = new Request('api/Public/Create', options);
+        const request = new Request('api/QuestionModels', options);
         const response = await fetch(request);
         const status = await response.status;
 

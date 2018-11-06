@@ -11,6 +11,6 @@ namespace ServiceModul.Model
         [Key]
         public int QuestionID { get; set; }
         public string Question { get; set; }
-        public int QuestionSolution { get; set; }
+        public string QuestionSolution { get; set; }
     }
 }
