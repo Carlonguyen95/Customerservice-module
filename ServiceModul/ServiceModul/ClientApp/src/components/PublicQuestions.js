@@ -27,7 +27,7 @@ export default class PublicQuestions extends Component {
             </thead>
             <tbody>
                 {publicQuestionList.map(faq =>
-                        <tr key={faq.id}>
+                        <tr>
                             <td>{faq.questionTopic}</td>
                             <td>{faq.question}</td>
                         </tr>

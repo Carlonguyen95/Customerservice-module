@@ -8,10 +8,7 @@ export class FAQ extends Component {
         this.state = {
             faqList: [],
             loading: true,
-            shown: true
         };
-
-        this.toggle = this.toggle.bind(this);
 
         fetch('api/FAQ')
             .then(response => response.json())
@@ -20,28 +17,22 @@ export class FAQ extends Component {
             });
     }
 
-    toggle() {
-        this.setState({
-            shown: !this.state.shown
-        });
-        alert(this.state.shown);
-    }
-
     static renderFAQ(faqList) {
-        return <table className='table table-striped'>
-            <thead>
-                <tr>
-                    <th><div className="col-sm-2 hidden-xs"></div></th>
-                </tr>
-            </thead>
-            <tbody>
+        return (
+            <div className='container'>
                 {faqList.map(faq =>
-                    <tr key={faq.id}>
-                        <td><div><a href="/faq" onClick={this.toggle}><h3>{faq.question}</h3></a></div></td>
-                    </tr>
+                    <div key={faq.id}>
+                        <a className='btn btn-primary' role='button' data-toggle='collapse' href={faq.id} aria-expanded='false' aria-controls={faq.id}>
+                            {faq.question}
+                        </a>
+
+                        <div id={faq.id} className='collapse'>
+                            {faq.solution}
+                        </div>
+                    </div>
                 )}
-            </tbody>
-        </table>;
+            </div>
+        );
     }
 
     render() {
@@ -51,7 +42,199 @@ export class FAQ extends Component {
 
         return (
             <div>
-                <h1>Frequently Asked Questions</h1>
+                <h1>FAQ</h1>
+                <div id='container'>
+
+                    <div className='panel-group' id='faqContainer' role='tablist' aria-multiselectable="true">
+                        <div className='panel panel-default'>
+                            <div className='panel-heading' role='tab' id="heading">
+                                <h4 className='panel-title'>
+                                    <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q" aria-expanded="true" aria-controls="#q">
+                                        Q: How can I buy movies?
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div id="q" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading'>
+                                <div className='panel-body'>
+                                    <h5><span className='label label-primary'>Answer</span></h5>
+                                    <p>Make sure you have a registered account, then navigate to movies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading1">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q1" aria-expanded="true" aria-controls="#q1">
+                                    Q: How can I buy movies?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q1" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading1'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>Make sure you have a registered account, then navigate to movies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading2">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q2" aria-expanded="true" aria-controls="#q2">
+                                    Q: Where does the name MovieMonster come from?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q2" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading2'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>Good question.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading3">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q3" aria-expanded="true" aria-controls="#q3">
+                                    Q: How can I get a job at MovieMonster?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q3" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>We dont hire.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading4">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q4" aria-expanded="true" aria-controls="#q4">
+                                    Q: Is is possible to rent movies only?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q4" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading4'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>Renting functionality will be supported soon.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading5">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q5" aria-expanded="true" aria-controls="#q5">
+                                    Q: Who is the one?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q5" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading5'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>Neo is the one.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading6">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q6" aria-expanded="true" aria-controls="#q6">
+                                    Q: What is the cheapest movie?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q6" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading6'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>All movies are cheap.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading7">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q7" aria-expanded="true" aria-controls="#q7">
+                                    Q: I forgot my password, what do I do?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q7" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading7'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>Send an email to moviemonster@support.com.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading8">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q8" aria-expanded="true" aria-controls="#q8">
+                                    Q: What type of movies can I buy?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q8" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading8'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>MovieMonster support all kinds of movies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading9">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q9" aria-expanded="true" aria-controls="#q9">
+                                    Q: How do I see my orders?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q9" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading9'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>Login, and navigate to my account, then "My order details".</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading10">
+                            <h4 className='panel-title'>
+                                <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q10" aria-expanded="true" aria-controls="#q10">
+                                    Q: How do I register?
+                                    </a>
+                            </h4>
+                        </div>
+
+                        <div id="q10" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading10'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-primary'>Answer</span></h5>
+                                <p>Click on register.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
                 {contents}
             </div>
