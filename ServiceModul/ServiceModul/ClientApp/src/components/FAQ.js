@@ -7,8 +7,11 @@ export class FAQ extends Component {
         super();
         this.state = {
             faqList: [],
-            loading: true
+            loading: true,
+            shown: true
         };
+
+        this.toggle = this.toggle.bind(this);
 
         fetch('api/FAQ')
             .then(response => response.json())
@@ -17,19 +20,24 @@ export class FAQ extends Component {
             });
     }
 
+    toggle() {
+        this.setState({
+            shown: !this.state.shown
+        });
+        alert(this.state.shown);
+    }
+
     static renderFAQ(faqList) {
         return <table className='table table-striped'>
             <thead>
                 <tr>
-                    <th>Question</th>
-                    <th>Solution</th>
+                    <th><div className="col-sm-2 hidden-xs"></div></th>
                 </tr>
             </thead>
             <tbody>
                 {faqList.map(faq =>
                     <tr key={faq.id}>
-                        <td>{faq.question}</td>
-                        <td>{faq.solution}</td>
+                        <td><div><a href="/faq" onClick={this.toggle}><h3>{faq.question}</h3></a></div></td>
                     </tr>
                 )}
             </tbody>

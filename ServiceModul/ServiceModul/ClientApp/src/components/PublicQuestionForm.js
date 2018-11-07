@@ -38,7 +38,6 @@ export default class QuestionForm extends Component {
         }).then(response => {
             return response;
             }).catch(err => err);
-        alert(this.state.topic + " " + this.state.question);
     }
 
     render() {
@@ -59,7 +58,7 @@ export default class QuestionForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <input type="submit" className="btn btn-primary" value="Submit"/>
                 </div>
             </form>
         );

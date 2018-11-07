@@ -21,7 +21,7 @@ export default class PublicQuestions extends Component {
         return <table className='table table-striped'>
             <thead>
                 <tr>
-                    <th> Question Topic </th>
+                    <th> Topic </th>
                     <th> Question </th>
                 </tr>
             </thead>
