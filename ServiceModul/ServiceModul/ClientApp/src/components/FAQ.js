@@ -22,7 +22,7 @@ export class FAQ extends Component {
         return (
             <div>
                 {faqList.map(faq =>
-                    <div className='panel panel-primary'>
+                    <div key={faq.id} className='panel panel-primary'>
                         <div className='panel-heading' role='tab' id="heading10">
                             <h4 className='panel-title'>
                                 <a className='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href="#1" aria-expanded="false" aria-controls="#1">
