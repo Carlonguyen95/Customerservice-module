@@ -18,23 +18,38 @@ export default class PublicQuestionsTable extends Component {
     }
 
     render() {
-        const publicQuestionList = this.props.publicQuestionList;
         return (
             <div>
-                {publicQuestionList.map(faq =>
+                {this.state.publicQuestionListChild.map((faq, index) =>
+                    <div className='panel panel-default'>
+                        <div className='panel-heading' role='tab' id="heading">
+                            <h4 className='panel-title'>
+                                <a className='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href={"#"+index} aria-expanded="false" aria-controls={"#"+index}>
+                                    <span className='glyphicon glyphicon-question-sign'></span> {faq.questionTopic}
+                                </a>
+                            </h4>
+                        </div>
 
-                <table className='table table-striped'>
-                        <thead>
-                            <tr>
-                                <th>{faq.topic}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{faq.question}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <div id={index} className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading'>
+                            <div className='panel-body'>
+                                <p>{faq.question}</p>
+
+                                <hr />
+
+                                <div className="form-group">
+                                    <label htmlFor="customerQuestion">Your Answer</label>
+                                    <textarea type="text" rows={3} className="form-control" name="question" placeholder="What is your question?"
+                                        value={this.props.question}
+                                        onChange={this.props.handleChange}
+                                    />
+                                </div>
+
+                                <div className="form-group">
+                                    <input type="submit" className="btn btn-primary" value="Post Your Answer" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 )}
 
             </div>

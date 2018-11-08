@@ -29,7 +29,7 @@ export class Public extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
+        //event.preventDefault();
 
         // POST request for Add Question
         fetch('api/QuestionModels', {
