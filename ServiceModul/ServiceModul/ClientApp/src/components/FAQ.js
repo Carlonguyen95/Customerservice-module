@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import './FAQ.css'; 
 
 export class FAQ extends Component {
     displayName = FAQ.name
@@ -42,7 +43,7 @@ export class FAQ extends Component {
 
         return (
             <div>
-                <h1>FAQ</h1>
+                <h1>General FAQ</h1>
                 <div id='container'>
 
                     <div className='panel-group' id='faqContainer' role='tablist' aria-multiselectable="true">

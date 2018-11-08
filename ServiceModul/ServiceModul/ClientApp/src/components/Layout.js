@@ -7,7 +7,7 @@ export class Layout extends Component {
 
   render() {
     return (
-      <Grid fluid>
+      <Grid>
         <Row>
           <Col sm={3}>
             <NavMenu />
