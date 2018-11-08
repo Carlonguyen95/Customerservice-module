@@ -5,18 +5,18 @@ import PublicQuestionsTable from './PublicQuestionsTable';
 export class Public extends Component {
     displayName = Public.name
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = {
             topic: '',
             question: '',
             publicQuestionList: []
-        };
+        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    };
 
     handleChange(event) {
         const target = event.target;
@@ -30,11 +30,6 @@ export class Public extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        let publicQuestionList = [...this.state.publicQuestionList];
-        publicQuestionList.push({
-            Topic: this.state.topic,
-            Question: this.state.question
-        });
 
         // POST request for Add Question
         fetch('api/QuestionModels', {
@@ -46,7 +41,14 @@ export class Public extends Component {
             })
         }).then(response => {
             return response;
-            }).catch(err => err);
+        }).catch(err => err);
+
+        let publicQuestionList = [...this.state.publicQuestionList];
+
+        publicQuestionList.push({
+            topic: this.state.topic,
+            question: this.state.question
+        });
 
         this.setState({
             publicQuestionList,

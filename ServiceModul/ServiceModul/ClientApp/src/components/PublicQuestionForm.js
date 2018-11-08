@@ -3,10 +3,6 @@
 export default class PublicQuestionForm extends Component {
     displayName = PublicQuestionForm.name
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
@@ -24,14 +20,16 @@ export default class PublicQuestionForm extends Component {
                             <div className="form-group">
                                 <label htmlFor="customerTopic">Your Topic</label>
                                 <input type="text" className="form-control" name="topic" placeholder="What is your topic?"
-                                    value={this.props.topic} onChange={this.props.handleChange}
+                                    value={this.props.topic}
+                                    onChange={this.props.handleChange}
                                 />
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="customerQuestion">Your Question</label>
                                 <textarea type="text" rows={3} className="form-control" name="question" placeholder="What is your question?"
-                                    value={this.props.question} onChange={this.props.handleChange}
+                                    value={this.props.question}
+                                    onChange={this.props.handleChange}
                                 />
                             </div>
 
