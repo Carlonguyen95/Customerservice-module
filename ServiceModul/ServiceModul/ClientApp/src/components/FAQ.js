@@ -20,15 +20,22 @@ export class FAQ extends Component {
 
     static renderFAQ(faqList) {
         return (
-            <div className='container'>
+            <div>
                 {faqList.map(faq =>
-                    <div key={faq.id}>
-                        <a className='btn btn-primary' role='button' data-toggle='collapse' href={faq.id} aria-expanded='false' aria-controls={faq.id}>
-                            {faq.question}
-                        </a>
+                    <div className='panel panel-primary'>
+                        <div className='panel-heading' role='tab' id="heading10">
+                            <h4 className='panel-title'>
+                                <a className='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href="#1" aria-expanded="false" aria-controls="#1">
+                                    <span className='glyphicon glyphicon-question-sign'></span> {faq.question}
+                                        </a>
+                            </h4>
+                        </div>
 
-                        <div id={faq.id} className='collapse'>
-                            {faq.solution}
+                        <div id={faq.id} className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading10'>
+                            <div className='panel-body'>
+                                <h5><span className='label label-success'>Answer</span></h5>
+                                <p>{faq.solution}</p>
+                            </div>
                         </div>
                     </div>
                 )}
@@ -37,13 +44,14 @@ export class FAQ extends Component {
     }
 
     render() {
-        //let contents = this.state.loading
-        //    ? <p><em>Loading...</em></p>
-        //    : FAQ.renderFAQ(this.state.faqList);
+        let contents = this.state.loading
+            ? <p><em>Loading...</em></p>
+            : FAQ.renderFAQ(this.state.faqList);
 
         return (
             <div>
                 <h1 id="faqTitle">General FAQ</h1>
+                <hr />
                 <div id='container'>
 
                     <div className='panel-group' id='accordion' role='tablist' aria-multiselectable="true">
@@ -237,9 +245,10 @@ export class FAQ extends Component {
                     </div>
 
                     </div>
+                    {contents}
+
                 </div>
 
-            //faq content fra db her
             </div>
         );
     }

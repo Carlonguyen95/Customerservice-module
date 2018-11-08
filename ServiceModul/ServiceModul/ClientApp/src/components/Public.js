@@ -8,10 +8,12 @@ export class Public extends Component {
     render() {
         return (
             <div>
-                <h1>Browse Public Questions</h1>
-
+                <h1>Ask Question</h1>
+                <hr />
                 <PublicQuestionForm />
 
+                <h1>Browse Public Questions</h1>
+                <hr />
                 <PublicQuestions />
             </div>
         );
