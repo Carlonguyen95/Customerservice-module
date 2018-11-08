@@ -37,13 +37,13 @@ export class FAQ extends Component {
     }
 
     render() {
-        let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
-            : FAQ.renderFAQ(this.state.faqList);
+        //let contents = this.state.loading
+        //    ? <p><em>Loading...</em></p>
+        //    : FAQ.renderFAQ(this.state.faqList);
 
         return (
             <div>
-                <h1>General FAQ</h1>
+                <h1 id="faqTitle">General FAQ</h1>
                 <div id='container'>
 
                     <div className='panel-group' id='faqContainer' role='tablist' aria-multiselectable="true">
@@ -51,7 +51,7 @@ export class FAQ extends Component {
                             <div className='panel-heading' role='tab' id="heading">
                                 <h4 className='panel-title'>
                                     <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q" aria-expanded="true" aria-controls="#q">
-                                        Q: How can I buy movies?
+                                        <span className='glyphicon glyphicon-question-sign'></span> How can I buy movies?
                                     </a>
                                 </h4>
                             </div>
@@ -69,7 +69,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading1">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q1" aria-expanded="true" aria-controls="#q1">
-                                    Q: How can I buy movies?
+                                    <span className='glyphicon glyphicon-question-sign'></span> How can I buy movies?
                                     </a>
                             </h4>
                         </div>
@@ -86,7 +86,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading2">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q2" aria-expanded="true" aria-controls="#q2">
-                                    Q: Where does the name MovieMonster come from?
+                                    <span className='glyphicon glyphicon-question-sign'></span> Where does the name MovieMonster come from?
                                     </a>
                             </h4>
                         </div>
@@ -103,7 +103,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading3">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q3" aria-expanded="true" aria-controls="#q3">
-                                    Q: How can I get a job at MovieMonster?
+                                    <span className='glyphicon glyphicon-question-sign'></span> How can I get a job at MovieMonster?
                                     </a>
                             </h4>
                         </div>
@@ -120,7 +120,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading4">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q4" aria-expanded="true" aria-controls="#q4">
-                                    Q: Is is possible to rent movies only?
+                                    <span className='glyphicon glyphicon-question-sign'></span> Is is possible to rent movies only?
                                     </a>
                             </h4>
                         </div>
@@ -137,7 +137,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading5">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q5" aria-expanded="true" aria-controls="#q5">
-                                    Q: Who is the one?
+                                    <span className='glyphicon glyphicon-question-sign'></span> Who is the one?
                                     </a>
                             </h4>
                         </div>
@@ -154,7 +154,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading6">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q6" aria-expanded="true" aria-controls="#q6">
-                                    Q: What is the cheapest movie?
+                                    <span className='glyphicon glyphicon-question-sign'></span> What is the cheapest movie?
                                     </a>
                             </h4>
                         </div>
@@ -171,7 +171,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading7">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q7" aria-expanded="true" aria-controls="#q7">
-                                    Q: I forgot my password, what do I do?
+                                    <span className='glyphicon glyphicon-question-sign'></span> I forgot my password, what do I do?
                                     </a>
                             </h4>
                         </div>
@@ -188,7 +188,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading8">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q8" aria-expanded="true" aria-controls="#q8">
-                                    Q: What type of movies can I buy?
+                                    <span className='glyphicon glyphicon-question-sign'></span> What type of movies can I buy?
                                     </a>
                             </h4>
                         </div>
@@ -205,7 +205,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading9">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q9" aria-expanded="true" aria-controls="#q9">
-                                    Q: How do I see my orders?
+                                    <span className='glyphicon glyphicon-question-sign'></span> How do I see my orders?
                                     </a>
                             </h4>
                         </div>
@@ -222,7 +222,7 @@ export class FAQ extends Component {
                         <div className='panel-heading' role='tab' id="heading10">
                             <h4 className='panel-title'>
                                 <a role='button' data-toggle='collapse' data-parent='faqContainer' href="#q10" aria-expanded="true" aria-controls="#q10">
-                                    Q: How do I register?
+                                    <span className='glyphicon glyphicon-question-sign'></span> How do I register?
                                     </a>
                             </h4>
                         </div>
@@ -237,7 +237,7 @@ export class FAQ extends Component {
 
                 </div>
 
-                {contents}
+            //faq content fra db her
             </div>
         );
     }
