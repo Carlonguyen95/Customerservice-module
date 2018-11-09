@@ -16,6 +16,12 @@ export class Public extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        fetch('api/QuestionModels')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ publicQuestionList: data });
+            });
     };
 
     handleChange(event) {
@@ -46,7 +52,7 @@ export class Public extends Component {
         let publicQuestionList = [...this.state.publicQuestionList];
 
         publicQuestionList.push({
-            topic: this.state.topic,
+            questionTopic: this.state.topic,
             question: this.state.question
         });
 

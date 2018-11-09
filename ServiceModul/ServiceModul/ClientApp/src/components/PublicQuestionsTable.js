@@ -8,7 +8,7 @@ export default class PublicQuestionsTable extends Component {
 
     //    this.state = {
     //        answer: '',
-    //        publicQuestionListChild: this.props.publicQuestionList
+    //        publicQuestionList: this.props.publicQuestionList
     //    }
 
     //    this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
@@ -17,37 +17,20 @@ export default class PublicQuestionsTable extends Component {
     //    fetch('api/QuestionModels')
     //        .then(response => response.json())
     //        .then(data => {
-    //            this.setState({ publicQuestionListChild: data });
+    //            this.setState({ publicQuestionList: data });
     //        });
     //};
 
-    handleChange(event) {
-        this.setState({ answer: event.target.value });
-    }
-
-    handleAnswerSubmit(index) {
-        fetch('api/QuestionModels/'+ index, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                'QuestionID': index,
-                'QuestionSolution': this.state.answer
-            })
-        }).then(response => {
-            return response;
-        }).catch(err => err);
-    }
-
     render() {
-        const publicQuestionListChild = this.props.publicQuestionList
+        const publicQuestionList = this.props.publicQuestionList
         return (
             <div className='panel-group' id='accordion' role='tablist' aria-multiselectable="true">
-                {publicQuestionListChild.map((faq, index) =>
+                {publicQuestionList.map((faq, index) =>
                     <div key={index} className='panel panel-default'>
                         <div className='panel-heading' role='tab' id="heading">
                             <h4 className='panel-title'>
                                 <a className='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href={"#"+index} aria-expanded="false" aria-controls={"#"+index}>
-                                    <span className='glyphicon glyphicon-question-sign'></span> {faq.topic}
+                                    <span className='glyphicon glyphicon-question-sign'></span> {faq.questionTopic}
                                 </a>
                             </h4>
                         </div>
