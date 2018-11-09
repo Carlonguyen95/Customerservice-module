@@ -18,10 +18,9 @@ export default class PublicQuestionsTable extends Component {
                         </div>
                         <div id={index} className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading'>
                             <div className='panel-body'>
-                                <p>{faq.question +"#"} {faq.id}</p>
+                                <p>Q: {faq.question}</p>
                                 <hr />
                                 <div>{faq.questionSolution}</div>
-                                <hr />
 
                                 <div className="form-group">
                                     <label htmlFor="customerQuestion">Your Answer</label>
@@ -32,7 +31,7 @@ export default class PublicQuestionsTable extends Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <button className="btn btn-primary" onClick={this.props.handleAnswerSubmit}>Post Your Answer</button>
+                                    <button className="btn btn-primary" onClick={() => this.props.handleAnswerSubmit(faq.questionID)}>Post Your Answer</button>
                                 </div>
                             </div>
                         </div>

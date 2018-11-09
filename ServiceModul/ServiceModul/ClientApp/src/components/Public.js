@@ -68,7 +68,7 @@ export class Public extends Component {
     handleAnswerSubmit(id) {
         
         // PUT request for Answer
-        fetch('api/QuestionModels/', {
+        fetch('api/QuestionModels/'+id, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
