@@ -25,11 +25,12 @@ export default class PublicQuestionsTable extends Component {
         this.setState({ answer: event.target.value });
     }
 
-    handleAnswerSubmit() {
-        fetch('api/QuestionModels/', {
+    handleAnswerSubmit(index) {
+        fetch('api/QuestionModels/'+ index, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+                'QuestionID': index,
                 'QuestionSolution': this.state.answer
             })
         }).then(response => {
@@ -39,7 +40,7 @@ export default class PublicQuestionsTable extends Component {
 
     render() {
         return (
-            <div>
+            <div className='panel-group' id='accordion' role='tablist' aria-multiselectable="true">
                 {this.state.publicQuestionListChild.map((faq, index) =>
                     <div key={index} className='panel panel-default'>
                         <div className='panel-heading' role='tab' id="heading">
@@ -65,7 +66,7 @@ export default class PublicQuestionsTable extends Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <button className="btn btn-primary" onClick={this.handleAnswerSubmit}>Post Your Answer</button>
+                                    <button className="btn btn-primary" onClick={this.handleAnswerSubmit(index)}>Post Your Answer</button>
                                 </div>
                             </div>
                         </div>

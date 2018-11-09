@@ -21,17 +21,17 @@ export class FAQ extends Component {
     static renderFAQ(faqList) {
         return (
             <div>
-                {faqList.map(faq =>
-                    <div key={faq.id} className='panel panel-primary'>
+                {faqList.map((faq, index) =>
+                    <div key={index} className='panel panel-primary'>
                         <div className='panel-heading' role='tab' id="heading10">
                             <h4 className='panel-title'>
-                                <a className='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href="#1" aria-expanded="false" aria-controls="#1">
+                                <a className='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href={"#" + index} aria-expanded="false" aria-controls={"#" + index}>
                                     <span className='glyphicon glyphicon-question-sign'></span> {faq.question}
                                         </a>
                             </h4>
                         </div>
 
-                        <div id={faq.id} className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading10'>
+                        <div id={index} className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading10'>
                             <div className='panel-body'>
                                 <h5><span className='label label-success'>Answer</span></h5>
                                 <p>{faq.solution}</p>
