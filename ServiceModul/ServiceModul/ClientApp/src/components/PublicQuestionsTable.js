@@ -20,7 +20,9 @@ export default class PublicQuestionsTable extends Component {
                             <div className='panel-body'>
                                 <p>Q: {faq.question}</p>
                                 <hr />
-                                <div>{faq.questionSolution}</div>
+                                <p>Answers:</p>
+                                <div id="answerDiv">{faq.questionSolution}</div>
+                                <hr />
 
                                 <div className="form-group">
                                     <label htmlFor="customerQuestion">Your Answer</label>
@@ -29,9 +31,8 @@ export default class PublicQuestionsTable extends Component {
                                         onChange={this.props.handleChange}
                                     />
                                 </div>
-
                                 <div className="form-group">
-                                    <button className="btn btn-primary" onClick={() => this.props.handleAnswerSubmit(faq.questionID)}>Post Your Answer</button>
+                                    <button className="btn btn-primary" onClick={() => this.props.handleAnswerSubmit(faq.questionID, faq.question, faq.questionTopic)}>Post Your Answer</button>
                                 </div>
                             </div>
                         </div>

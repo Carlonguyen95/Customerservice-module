@@ -65,7 +65,7 @@ export class Public extends Component {
         });
     }
 
-    handleAnswerSubmit(id) {
+    handleAnswerSubmit(id, topic, question, answer) {
         
         // PUT request for Answer
         fetch('api/QuestionModels/'+id, {
@@ -73,11 +73,21 @@ export class Public extends Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 'QuestionID': id,
-                'QuestionSolution': this.state.answer
+                'QuestionTopic': topic,
+                'Question': question,
+                'QuestionSolution': answer
             })
         }).then(response => {
             return response;
             }).catch(err => err);
+
+        let publicQuestionList = [...this.state.publicQuestionList];
+
+        publicQuestionList.push({
+            questionTopic: this.state.topic,
+            question: this.state.question,
+            questionSolution: this.state.answer,
+        });
 
         this.setState({
             answer: ''
@@ -102,6 +112,7 @@ export class Public extends Component {
                     handleChange={this.handleChange}
                     handleAnswerSubmit={this.handleAnswerSubmit}
                     publicQuestionList={this.state.publicQuestionList}
+                    answer={this.state.answer}
                 />
             </div>
         );
