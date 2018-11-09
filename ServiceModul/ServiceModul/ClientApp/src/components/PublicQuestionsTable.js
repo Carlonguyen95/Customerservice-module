@@ -3,23 +3,23 @@
 export default class PublicQuestionsTable extends Component {
     displayName = PublicQuestionsTable.name
 
-    constructor(props) {
-        super(props);
+    //constructor(props) {
+    //    super(props);
 
-        this.state = {
-            answer: '',
-            publicQuestionListChild: this.props.publicQuestionList
-        }
+    //    this.state = {
+    //        answer: '',
+    //        publicQuestionListChild: this.props.publicQuestionList
+    //    }
 
-        this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+    //    this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
+    //    this.handleChange = this.handleChange.bind(this);
 
-        fetch('api/QuestionModels')
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ publicQuestionListChild: data });
-            });
-    };
+    //    fetch('api/QuestionModels')
+    //        .then(response => response.json())
+    //        .then(data => {
+    //            this.setState({ publicQuestionListChild: data });
+    //        });
+    //};
 
     handleChange(event) {
         this.setState({ answer: event.target.value });
@@ -39,14 +39,15 @@ export default class PublicQuestionsTable extends Component {
     }
 
     render() {
+        const publicQuestionListChild = this.props.publicQuestionList
         return (
             <div className='panel-group' id='accordion' role='tablist' aria-multiselectable="true">
-                {this.state.publicQuestionListChild.map((faq, index) =>
+                {publicQuestionListChild.map((faq, index) =>
                     <div key={index} className='panel panel-default'>
                         <div className='panel-heading' role='tab' id="heading">
                             <h4 className='panel-title'>
                                 <a className='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href={"#"+index} aria-expanded="false" aria-controls={"#"+index}>
-                                    <span className='glyphicon glyphicon-question-sign'></span> {faq.questionTopic}
+                                    <span className='glyphicon glyphicon-question-sign'></span> {faq.topic}
                                 </a>
                             </h4>
                         </div>
@@ -60,13 +61,11 @@ export default class PublicQuestionsTable extends Component {
                                 <div className="form-group">
                                     <label htmlFor="customerQuestion">Your Answer</label>
                                     <textarea type="text" rows={2} className="form-control" name="answer"
-                                        value={this.state.answer}
-                                        onChange={this.handleChange}
                                     />
                                 </div>
 
                                 <div className="form-group">
-                                    <button className="btn btn-primary" onClick={this.handleAnswerSubmit(index)}>Post Your Answer</button>
+                                    <button className="btn btn-primary">Post Your Answer</button>
                                 </div>
                             </div>
                         </div>
