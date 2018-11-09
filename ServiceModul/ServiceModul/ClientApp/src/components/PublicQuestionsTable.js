@@ -3,24 +3,6 @@
 export default class PublicQuestionsTable extends Component {
     displayName = PublicQuestionsTable.name
 
-    //constructor(props) {
-    //    super(props);
-
-    //    this.state = {
-    //        answer: '',
-    //        publicQuestionList: this.props.publicQuestionList
-    //    }
-
-    //    this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
-    //    this.handleChange = this.handleChange.bind(this);
-
-    //    fetch('api/QuestionModels')
-    //        .then(response => response.json())
-    //        .then(data => {
-    //            this.setState({ publicQuestionList: data });
-    //        });
-    //};
-
     render() {
         const publicQuestionList = this.props.publicQuestionList
         return (
@@ -36,7 +18,7 @@ export default class PublicQuestionsTable extends Component {
                         </div>
                         <div id={index} className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading'>
                             <div className='panel-body'>
-                                <p>{faq.question}</p>
+                                <p>{faq.question +"#"} {faq.id}</p>
                                 <hr />
                                 <div>{faq.questionSolution}</div>
                                 <hr />
@@ -44,11 +26,13 @@ export default class PublicQuestionsTable extends Component {
                                 <div className="form-group">
                                     <label htmlFor="customerQuestion">Your Answer</label>
                                     <textarea type="text" rows={2} className="form-control" name="answer"
+                                        value={this.props.answer}
+                                        onChange={this.props.handleChange}
                                     />
                                 </div>
 
                                 <div className="form-group">
-                                    <button className="btn btn-primary">Post Your Answer</button>
+                                    <button className="btn btn-primary" onClick={this.props.handleAnswerSubmit}>Post Your Answer</button>
                                 </div>
                             </div>
                         </div>

@@ -9,6 +9,7 @@ export class Public extends Component {
         super();
 
         this.state = {
+            answer: '',
             topic: '',
             question: '',
             publicQuestionList: []
@@ -16,6 +17,7 @@ export class Public extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
 
         fetch('api/QuestionModels')
             .then(response => response.json())
@@ -63,13 +65,44 @@ export class Public extends Component {
         });
     }
 
+    handleAnswerSubmit(id) {
+        
+        // PUT request for Answer
+        fetch('api/QuestionModels/', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                'QuestionID': id,
+                'QuestionSolution': this.state.answer
+            })
+        }).then(response => {
+            return response;
+            }).catch(err => err);
+
+        this.setState({
+            answer: ''
+        });
+    }
+
     render() {
         return (
             <div>
                 <h1>Browse Public Questions</h1>
-                <PublicQuestionForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} topic={this.state.topic} question={this.state.question} />
+                <PublicQuestionForm
+                    handleSubmit={this.handleSubmit}
+                    handleChange={this.handleChange}
+                    topic={this.state.topic}
+                    question={this.state.question}
+                />
+
                 <hr />
-                <PublicQuestionsTable publicQuestionList={this.state.publicQuestionList} />
+
+                <PublicQuestionsTable
+                    handleSubmit={this.handleSubmit}
+                    handleChange={this.handleChange}
+                    handleAnswerSubmit={this.handleAnswerSubmit}
+                    publicQuestionList={this.state.publicQuestionList}
+                />
             </div>
         );
     }
