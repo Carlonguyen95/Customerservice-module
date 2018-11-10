@@ -18,6 +18,7 @@ export class Public extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
+        this.upvote = this.upvote.bind(this);
 
         fetch('api/QuestionModels')
             .then(response => response.json())
@@ -65,8 +66,7 @@ export class Public extends Component {
         });
     }
 
-    handleAnswerSubmit(id, topic, question, answer) {
-        
+    handleAnswerSubmit(id, topic, question, rating) {
         // PUT request for Answer
         fetch('api/QuestionModels/'+id, {
             method: 'PUT',
@@ -75,7 +75,8 @@ export class Public extends Component {
                 'QuestionID': id,
                 'QuestionTopic': topic,
                 'Question': question,
-                'QuestionSolution': answer
+                'QuestionSolution': this.state.answer,
+                'Rating': rating
             })
         }).then(response => {
             return response;
@@ -91,6 +92,31 @@ export class Public extends Component {
 
         this.setState({
             answer: ''
+        });
+    }
+
+    upvote(id, topic, question, answer, rating) {
+        fetch('api/QuestionModels/' + id, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                'QuestionID': id,
+                'QuestionTopic': topic,
+                'Question': question,
+                'QuestionSolution': answer,
+                'Rating': rating + 1
+            })
+        }).then(response => {
+            return response;
+        }).catch(err => err);
+
+        let publicQuestionList = [...this.state.publicQuestionList];
+
+        publicQuestionList.push({
+            questionTopic: this.state.topic,
+            question: this.state.question,
+            questionSolution: this.state.answer,
+            rating: rating
         });
     }
 
@@ -111,6 +137,7 @@ export class Public extends Component {
                     handleSubmit={this.handleSubmit}
                     handleChange={this.handleChange}
                     handleAnswerSubmit={this.handleAnswerSubmit}
+                    upvote={this.upvote}
                     publicQuestionList={this.state.publicQuestionList}
                     answer={this.state.answer}
                 />

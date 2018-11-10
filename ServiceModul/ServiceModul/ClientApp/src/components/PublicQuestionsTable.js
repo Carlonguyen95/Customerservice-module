@@ -16,11 +16,18 @@ export default class PublicQuestionsTable extends Component {
                                 </a>
                             </h4>
                         </div>
+
                         <div id={index} className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading'>
                             <div className='panel-body'>
-                                <p>Q: {faq.question}</p>
+                                <div className="vote" style={{ float: 'right' }}>
+                                    <button type='button' className='btn btn-default btn-sm' onClick={() => this.props.upvote(faq.questionID, faq.question, faq.questionTopic, faq.questionSolution, faq.rating)}>
+                                        <span className="glyphicon glyphicon-triangle-top"> {faq.rating}</span>
+                                    </button>
+                                </div>
+                                <label>Question:</label>
+                                <p>{faq.question}</p>
                                 <hr />
-                                <p>Answers:</p>
+                                <label>Answer:</label>
                                 <div id="answerDiv">{faq.questionSolution}</div>
                                 <hr />
 
@@ -32,7 +39,7 @@ export default class PublicQuestionsTable extends Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <button className="btn btn-primary" onClick={() => this.props.handleAnswerSubmit(faq.questionID, faq.question, faq.questionTopic)}>Post Your Answer</button>
+                                    <button className="btn btn-primary" onClick={() => this.props.handleAnswerSubmit(faq.questionID, faq.question, faq.questionTopic, faq.rating)}>Post Your Answer</button>
                                 </div>
                             </div>
                         </div>
