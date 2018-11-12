@@ -21,6 +21,8 @@ export class Public extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
         this.upvote = this.upvote.bind(this);
+        this.getValidationStateTopic = this.getValidationStateTopic.bind(this);
+        this.getValidationStateQuestion = this.getValidationStateQuestion.bind(this);
 
         fetch('api/QuestionModels')
             .then(response => response.json())
@@ -49,6 +51,10 @@ export class Public extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+
+        if (!(this.getValidationStateTopic() && this.getValidationStateQuestion())) {
+            return false;
+        }
 
         // POST request for Add Question
         fetch('api/QuestionModels', {
@@ -118,6 +124,24 @@ export class Public extends Component {
         });
     }
 
+    getValidationStateTopic() {
+        const topic = this.state.topic;
+        var regex = new RegExp("^[a-zA-Z ]{5,40}$");
+
+        if (regex.test(topic) && topic.length > 5) return 'success';
+        else if (topic.length > 0) return 'error';
+        return null;
+    }
+
+    getValidationStateQuestion() {
+        const question = this.state.question;
+        var regex = new RegExp("^[a-zA-Z ]{5,500}$");
+
+        if (regex.test(question) && question.length > 5) return 'success';
+        else if (question.length > 0) return 'error';
+        return null;
+    }
+
     render() {
         return (
             <div>
@@ -125,6 +149,8 @@ export class Public extends Component {
                 <PublicQuestionForm
                     handleSubmit={this.handleSubmit}
                     handleChange={this.handleChange}
+                    getValidationStateTopic={this.getValidationStateTopic}
+                    getValidationStateQuestion={this.getValidationStateQuestion}
                     topic={this.state.topic}
                     question={this.state.question}
                 />
