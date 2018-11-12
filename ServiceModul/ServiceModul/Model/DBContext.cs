@@ -89,6 +89,50 @@ namespace ServiceModul.Model
                         Solution = "MovieMonster support all kinds of movies."
                     }
                 );
+
+            modelBuilder.Entity<QuestionModel>().HasData(
+                    new QuestionModel
+                    {
+                        QuestionID = 1,
+                        Question = "Hello! I can't seem to buy movies from MovieMonster. What could be the problem?",
+                        QuestionTopic = "Can't buy movies. Help!",
+                        QuestionSolution = "",
+                        Rating = -5
+                    },
+
+                    new QuestionModel
+                    {
+                        QuestionID = 2,
+                        Question = "I accidentally committed the wrong files to Git, but I haven't pushed the commit to the server yet." +
+                        "How can I undo those commits from the local repository ? ",
+                        QuestionTopic = "How do I undo the most recent commits in Git?",
+                        QuestionSolution = "$ git commit -m 'Something terribly misguided'" +
+                        "$ git reset HEAD~" +
+                        "<< edit files as necessary >>" +
+                        "$ git add..." +
+                        "$ git commit - c ORIG_HEAD    ",
+                        Rating = 170
+                    },
+
+                    new QuestionModel
+                    {
+                        QuestionID = 3,
+                        Question = "Will you be adding livestreaming to MovieMonster?",
+                        QuestionTopic = "Livestreaming function in the future?",
+                        QuestionSolution = "MovieMonster unfortunately doesn't support this function.",
+                        Rating = 0
+                    },
+
+                    new QuestionModel
+                    {
+                        QuestionID = 4,
+                        Question = "Why is my account banned? help me pls",
+                        QuestionTopic = "My account is banned!!",
+                        QuestionSolution = "",
+                        Rating = 5
+                    }
+
+                );
         }
     }
 

@@ -98,7 +98,7 @@ export class Public extends Component {
         });
     }
 
-    upvote(id, topic, question, answer, rating) {
+    upvote(id, question, topic, answer, rating) {
         fetch('api/QuestionModels/' + id, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
