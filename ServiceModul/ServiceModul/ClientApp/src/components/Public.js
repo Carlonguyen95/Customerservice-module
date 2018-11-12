@@ -12,9 +12,11 @@ export class Public extends Component {
             answer: '',
             topic: '',
             question: '',
+            rating: 0,
             publicQuestionList: []
         }
 
+        this.handleFetchData = this.handleFetchData.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
@@ -26,6 +28,14 @@ export class Public extends Component {
                 this.setState({ publicQuestionList: data });
             });
     };
+
+    handleFetchData() {
+        fetch('api/QuestionModels')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ publicQuestionList: data });
+            });
+    }
 
     handleChange(event) {
         const target = event.target;
@@ -49,14 +59,15 @@ export class Public extends Component {
                 'Question': this.state.question
             })
         }).then(response => {
-            return response;
+            this.handleFetchData();
         }).catch(err => err);
 
         let publicQuestionList = [...this.state.publicQuestionList];
 
         publicQuestionList.push({
             questionTopic: this.state.topic,
-            question: this.state.question
+            question: this.state.question,
+            rating: this.state.rating
         });
 
         this.setState({
@@ -79,16 +90,8 @@ export class Public extends Component {
                 'Rating': rating
             })
         }).then(response => {
-            return response;
+            this.handleFetchData();
             }).catch(err => err);
-
-        let publicQuestionList = [...this.state.publicQuestionList];
-
-        publicQuestionList.push({
-            questionTopic: this.state.topic,
-            question: this.state.question,
-            questionSolution: this.state.answer,
-        });
 
         this.setState({
             answer: ''
@@ -107,16 +110,11 @@ export class Public extends Component {
                 'Rating': rating + 1
             })
         }).then(response => {
-            return response;
+            this.handleFetchData();
         }).catch(err => err);
 
-        let publicQuestionList = [...this.state.publicQuestionList];
-
-        publicQuestionList.push({
-            questionTopic: this.state.topic,
-            question: this.state.question,
-            questionSolution: this.state.answer,
-            rating: rating
+        this.setState({
+            answer: ''
         });
     }
 
