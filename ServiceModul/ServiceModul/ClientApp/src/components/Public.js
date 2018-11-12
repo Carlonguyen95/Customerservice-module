@@ -23,6 +23,7 @@ export class Public extends Component {
         this.upvote = this.upvote.bind(this);
         this.getValidationStateTopic = this.getValidationStateTopic.bind(this);
         this.getValidationStateQuestion = this.getValidationStateQuestion.bind(this);
+        this.formValidation = this.formValidation.bind(this);
 
         fetch('api/QuestionModels')
             .then(response => response.json())
@@ -52,35 +53,34 @@ export class Public extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        if (!(this.getValidationStateTopic() && this.getValidationStateQuestion())) {
-            return false;
+        if (this.formValidation()) {
+            // POST request for Add Question
+            fetch('api/QuestionModels', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    'QuestionTopic': this.state.topic,
+                    'Question': this.state.question
+                })
+            }).then(response => {
+                this.handleFetchData();
+            }).catch(err => err);
+
+            let publicQuestionList = [...this.state.publicQuestionList];
+
+            publicQuestionList.push({
+                questionTopic: this.state.topic,
+                question: this.state.question,
+                rating: this.state.rating
+            });
+
+            this.setState({
+                publicQuestionList,
+                topic: '',
+                question: ''
+            });
         }
 
-        // POST request for Add Question
-        fetch('api/QuestionModels', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                'QuestionTopic': this.state.topic,
-                'Question': this.state.question
-            })
-        }).then(response => {
-            this.handleFetchData();
-        }).catch(err => err);
-
-        let publicQuestionList = [...this.state.publicQuestionList];
-
-        publicQuestionList.push({
-            questionTopic: this.state.topic,
-            question: this.state.question,
-            rating: this.state.rating
-        });
-
-        this.setState({
-            publicQuestionList,
-            topic: '',
-            question: ''
-        });
     }
 
     handleAnswerSubmit(id, topic, question, rating) {
@@ -140,6 +140,13 @@ export class Public extends Component {
         if (regex.test(question) && question.length > 5) return 'success';
         else if (question.length > 0) return 'error';
         return null;
+    }
+
+    formValidation() {
+        if (this.state.topic.length == 0 || this.state.question.length == 0) {
+            return false;
+        }
+        return true;
     }
 
     render() {
