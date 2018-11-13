@@ -144,7 +144,7 @@ export class Public extends Component {
     }
 
     formValidation() {
-        if (this.state.topic.length == 0 || this.state.question.length == 0) {
+        if (this.state.topic.length === 0 || this.state.question.length === 0) {
             return false;
         }
         return true;
