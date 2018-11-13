@@ -80,6 +80,7 @@ export class Public extends Component {
                 question: ''
             });
         }
+        alert("You must fill the empty fields in order to submit a question!");
 
     }
 
