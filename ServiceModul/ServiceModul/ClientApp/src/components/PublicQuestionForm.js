@@ -14,7 +14,7 @@ export default class PublicQuestionForm extends Component {
                         </button>
                     </h4>
                 </div>
-
+                <br></br>
                 <div id="publicQuestionFormDiv" className='panel-collapse collapse' role='tabpanel' aria-labelledby='heading10'>
                     <div className='panel-body'>
                         <Form onSubmit={this.props.handleSubmit}>
@@ -38,7 +38,7 @@ export default class PublicQuestionForm extends Component {
                             >
                                 <InputGroup>
                                 <label htmlFor="customerQuestion">Your Question</label>
-                                    <FormControl type="text" componentClass="textarea" rows={3} name="question" placeholder="What is your question?"
+                                    <FormControl type="text" style={{resize:'none'}} componentClass="textarea" rows={3} name="question" placeholder="What is your question?"
                                     value={this.props.question}
                                     onChange={this.props.handleChange}
                                     />
