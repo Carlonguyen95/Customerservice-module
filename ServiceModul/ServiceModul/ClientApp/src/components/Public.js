@@ -79,12 +79,13 @@ export class Public extends Component {
                 topic: '',
                 question: ''
             });
+        } else {
+            alert("You must fill the empty fields in order to submit a question!");
         }
-        alert("You must fill the empty fields in order to submit a question!");
 
     }
 
-    handleAnswerSubmit(id, topic, question, rating) {
+    handleAnswerSubmit(id, question, topic, rating) {
         // PUT request for Answer
         fetch('api/QuestionModels/'+id, {
             method: 'PUT',

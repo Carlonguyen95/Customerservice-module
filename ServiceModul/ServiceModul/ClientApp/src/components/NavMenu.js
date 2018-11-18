@@ -20,17 +20,12 @@ export class NavMenu extends Component {
           <Nav>
             <LinkContainer to={'/'} exact>
               <NavItem>
-                <Glyphicon glyph='home' /> Home
+                <Glyphicon glyph='question-sign' /> FAQ
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/public'}>
               <NavItem>
                 <Glyphicon glyph='edit' /> Browse Public Questions
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/faq'}>
-              <NavItem>
-                <Glyphicon glyph='question-sign' /> FAQ
               </NavItem>
             </LinkContainer>
           </Nav>
